@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二极管三重唱</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 视频背景 -->
+
+    <!-- 页面内容容器 -->
+    <div class="page-container">
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-brand">二极管三重唱</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">首页</a></li>
+            <li><a href="#articles">文章</a></li>
+            <li><a href="#about">关于</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主视觉区 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="vertical-text-group right">
+                <span class="vertical-text">爱良夜，亦不能长处黑暗，"爱"，你说出来，</span>
+                <span class="vertical-text">便有人问你为何"唉"叹，于是引出句："哎，你丫吃了没？"，奈何。</span>
+            </div>
+            <div class="hero-image-container" id="heroImageContainer">
+                <img src="poster.png" alt="个人海报" id="heroPoster">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="vertical-text-group left">
+                <span class="vertical-text main-title">过简不介</span>
+                <span class="vertical-text sub-title">记得吃饭</span>
+            </div>
+        </div>
+        <!-- GIF 对话气泡 -->
+        <div class="gif-monitor" id="gifMonitor">
+            <div class="gif-inner">
+                <img src="oEKOrABB0Bh54NriiAAEhAEPZgWIfxtQjYI2C1.gif" alt="">
+            </div>
+            <div class="gif-scanline"></div>
+            <div class="gif-tail">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+            </div>
+        </div>
+        <!-- TextPressure 动态文字 -->
+        <div class="hero-text-pressure" id="textPressure"></div>
+    </section>
+
+    <!-- 文章展示区 -->
+    <section class="articles" id="articles">
+        <h2 class="section-title">精选文章</h2>
+        <div class="articles-grid" id="articlesGrid">
+            <!-- JS 动态生成 -->
+        </div>
+    </section>
+
+    <!-- 文章书籍阅读器 -->
+    <div class="book-reader-overlay" id="bookReader">
+        <button class="book-close-btn" id="bookClose">&times;</button>
+        <div class="book-container">
+            <div class="book-spread" id="bookSpread">
+                <!-- 左页 -->
+                <div class="book-page book-page-left">
+                    <div class="book-page-image">
+                        <img src="" alt="" id="bookLeftImg">
+                    </div>
+                    <div class="book-page-number">01</div>
+                </div>
+                <!-- 右页 -->
+                <div class="book-page book-page-right">
+                    <div class="book-page-header">
+                        <span class="book-category" id="bookCategory"></span>
+                        <span class="book-date" id="bookDate"></span>
+                    </div>
+                    <h2 class="book-title" id="bookTitle"></h2>
+                    <div class="book-content" id="bookContent">
+                        <!-- 竖排文字动态生成 -->
+                    </div>
+                    <div class="book-page-number right-num">02</div>
+                </div>
+                <!-- 书脊 -->
+                <div class="book-spine"></div>
+            </div>
+        </div>
+        <!-- 翻页控制 -->
+        <div class="book-nav">
+            <button class="book-nav-btn" id="bookPrev" disabled>← 上一章</button>
+            <span class="book-progress" id="bookProgress">1 / 1</span>
+            <button class="book-nav-btn" id="bookNext" disabled>下一章 →</button>
+        </div>
+    </div>
+
+    <!-- 关于区域 -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="section-title">关于</h2>
+                <p>
+                    这里是二极管三重唱，一个记录思考与生活的个人博客。
+                    相信文字的力量，相信思考的价值。
+                </p>
+                <p>
+                    在这个快节奏的时代，
+                    选择慢下来，用文字梳理思绪，
+                    用镜头捕捉瞬间。
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500" alt="关于">
+                <div class="vertical-quote">
+                    <span>书</span>
+                    <span>写</span>
+                    <span>即</span>
+                    <span>生</span>
+                    <span>活</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">二极管三重唱</div>
+            <p class="footer-copy">© 2026 All Rights Reserved</p>
+        </div>
+    </footer>
+
+    </div><!-- /page-container -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/gl-matrix@3.4.3/gl-matrix.js"></script>
+    <script src="pixel-birds.js"></script>
+    <script src="text-shuffle.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
