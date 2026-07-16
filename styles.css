@@ -2379,10 +2379,35 @@ body {
 }
 
 @media (max-width: 768px) {
+    .book-reader-overlay {
+        height: 100dvh;
+        justify-content: flex-start;
+        padding: calc(4.75rem + env(safe-area-inset-top)) 0.75rem calc(5.5rem + env(safe-area-inset-bottom));
+        overflow: hidden;
+    }
+
+    .book-close-btn {
+        top: calc(0.75rem + env(safe-area-inset-top));
+        right: 0.75rem;
+        width: 2.75rem;
+        height: 2.75rem;
+        background: rgba(255, 255, 255, 0.96);
+    }
+
     .book-font-toolbar {
-        top: 4.8rem;
-        right: 1rem;
+        top: calc(0.75rem + env(safe-area-inset-top));
+        left: 0.75rem;
+        right: 4.25rem;
         transform: none;
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.2rem;
+        width: auto;
+        height: 2.75rem;
+        padding: 0.25rem 0.35rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        border-radius: 999px;
     }
 
     .book-font-label {
@@ -2390,13 +2415,67 @@ body {
     }
 
     .book-font-btn {
+        flex: 0 0 2rem;
         width: 2rem;
         height: 2rem;
     }
 
     .book-toolbar-divider {
-        width: 1.1rem;
-        margin: 0.08rem 0;
+        flex: 0 0 1px;
+        width: 1px;
+        height: 1.35rem;
+        margin: 0 0.1rem;
+    }
+
+    .book-container {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+    }
+
+    .book-spread,
+    .book-page-right {
+        height: 100%;
+        min-height: 0;
+    }
+
+    .book-page-right {
+        border-radius: 6px;
+        padding: 2rem 1.5rem 2.75rem;
+    }
+
+    .book-page-header {
+        padding-right: 0;
+    }
+
+    .book-nav {
+        position: fixed;
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: calc(0.75rem + env(safe-area-inset-bottom));
+        z-index: 10001;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 0.65rem;
+        width: auto;
+        margin: 0;
+    }
+
+    .book-nav-btn {
+        min-width: 0;
+        padding: 0.65rem 0.75rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        background: rgba(255, 255, 255, 0.96);
+    }
+
+    .book-progress {
+        white-space: nowrap;
+    }
+
+    body.book-reader-open .fx-menu {
+        display: none;
     }
 
     .book-reader-overlay {
@@ -2442,7 +2521,7 @@ body {
     }
 
     .book-reader-overlay.reader-writing-horizontal .book-page-right {
-        padding-right: 4.25rem;
+        padding-right: 1.5rem;
     }
 
     .book-reader-overlay.reader-writing-horizontal .book-content .horizontal-col {

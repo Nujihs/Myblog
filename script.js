@@ -1286,6 +1286,7 @@ function openBookReader(article, options) {
 
     // 显示并做入场动画
     overlay.classList.add('active');
+    document.body.classList.add('book-reader-open');
     document.body.style.overflow = 'hidden';
 
     if (options.updateUrl) {
@@ -1298,6 +1299,7 @@ function closeBookReader(options) {
     var overlay = document.getElementById('bookReader');
     if (!overlay) return;
     overlay.classList.remove('active');
+    document.body.classList.remove('book-reader-open');
     currentBookArticle = null;
     document.body.style.overflow = '';
     updateDocumentArticleMeta(null);
