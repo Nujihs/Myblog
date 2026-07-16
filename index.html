@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, noarchive, noimageindex">
     <title>二极管三重唱</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,7 +18,10 @@
 
     <!-- 导航栏 -->
     <nav class="navbar">
-        <div class="nav-brand">二极管三重唱</div>
+        <div class="nav-brand">
+            <img class="nav-logo" src="logo.png" alt="二极管三重唱 logo">
+            <span class="nav-brand-text">二极管三重唱</span>
+        </div>
         <ul class="nav-links">
             <li><a href="#home" class="active">首页</a></li>
             <li><a href="#articles">文章</a></li>
@@ -27,30 +32,46 @@
     <!-- 主视觉区 -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="vertical-text-group right">
-                <span class="vertical-text">爱良夜，亦不能长处黑暗，"爱"，你说出来，</span>
-                <span class="vertical-text">便有人问你为何"唉"叹，于是引出句："哎，你丫吃了没？"，奈何。</span>
+            <div class="hero-title-panel">
+                <div class="hero-kicker">
+                    <span>DIODE TRIO</span>
+                    <span>PRESENTS</span>
+                </div>
+                <h1 class="hero-grid-title" aria-label="过简不介，记得吃饭">
+                    <span>过</span>
+                    <span>简</span>
+                    <span>不</span>
+                    <span>介</span>
+                    <span>记</span>
+                    <span>得</span>
+                    <span>吃</span>
+                    <span>饭</span>
+                </h1>
+                <div class="hero-sub-grid" aria-label="写给你的每一天">
+                    <span>写</span>
+                    <span>给</span>
+                    <span>你</span>
+                    <span>的</span>
+                    <span>每</span>
+                    <span>一</span>
+                    <span>天</span>
+                </div>
             </div>
-            <div class="hero-image-container" id="heroImageContainer">
-                <img src="poster.png" alt="个人海报" id="heroPoster">
-                <div class="image-overlay"></div>
+            <div class="hero-logo" aria-label="logo">
+                <img src="hand_drawn_logo_clean.png?v=2" alt="logo">
             </div>
-            <div class="vertical-text-group left">
-                <span class="vertical-text main-title">过简不介</span>
-                <span class="vertical-text sub-title">记得吃饭</span>
+            <div class="hero-side-panel">
+                <div class="hero-side-years">2026</div>
+                <h2 class="hero-side-title">二极管三重唱</h2>
+                <p class="hero-side-copy">
+                    爱良夜，亦不能长处黑暗，『爱』，你说出来，便有人问你为何『唉』叹，于是引出句：『哎，你丫吃了没？』，奈何。
+                </p>
             </div>
         </div>
-        <!-- GIF 对话气泡 -->
-        <div class="gif-monitor" id="gifMonitor">
-            <div class="gif-inner">
-                <img src="oEKOrABB0Bh54NriiAAEhAEPZgWIfxtQjYI2C1.gif" alt="">
-            </div>
-            <div class="gif-scanline"></div>
-            <div class="gif-tail">
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-            </div>
+        <div class="hero-bottom-copy">
+            <p>在这里记录阅读、图像、技术和偶然经过的心情。</p>
+            <p>不是为了总结生活，而是为了把一些细小的声音留下来。</p>
+            <a href="#articles">去看文章</a>
         </div>
         <!-- TextPressure 动态文字 -->
         <div class="hero-text-pressure" id="textPressure"></div>
@@ -67,12 +88,23 @@
     <!-- 文章书籍阅读器 -->
     <div class="book-reader-overlay" id="bookReader">
         <button class="book-close-btn" id="bookClose">&times;</button>
+        <div class="book-font-toolbar" id="bookFontToolbar" aria-label="切换阅读字体">
+            <span class="book-font-label">字体</span>
+            <button type="button" class="book-font-btn active" data-reader-font="mao">毛</button>
+            <button type="button" class="book-font-btn" data-reader-font="serif">宋</button>
+            <button type="button" class="book-font-btn" data-reader-font="pixel">像</button>
+            <button type="button" class="book-font-btn" data-reader-font="fun">趣</button>
+            <span class="book-toolbar-divider" aria-hidden="true"></span>
+            <span class="book-font-label">排版</span>
+            <button type="button" class="book-font-btn active" data-reader-writing="vertical" title="竖向书写">竖</button>
+            <button type="button" class="book-font-btn" data-reader-writing="horizontal" title="横向书写">横</button>
+        </div>
         <div class="book-container">
             <div class="book-spread" id="bookSpread">
                 <!-- 左页 -->
                 <div class="book-page book-page-left">
                     <div class="book-page-image">
-                        <img src="" alt="" id="bookLeftImg">
+                        <img alt="" id="bookLeftImg">
                     </div>
                     <div class="book-page-number">01</div>
                 </div>
@@ -94,9 +126,9 @@
         </div>
         <!-- 翻页控制 -->
         <div class="book-nav">
-            <button class="book-nav-btn" id="bookPrev" disabled>← 上一章</button>
+            <button class="book-nav-btn" id="bookPrev" disabled>← 上一页</button>
             <span class="book-progress" id="bookProgress">1 / 1</span>
-            <button class="book-nav-btn" id="bookNext" disabled>下一章 →</button>
+            <button class="book-nav-btn" id="bookNext" disabled>下一页 →</button>
         </div>
     </div>
 
@@ -116,13 +148,17 @@
                 </p>
             </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500" alt="关于">
-                <div class="vertical-quote">
-                    <span>书</span>
-                    <span>写</span>
-                    <span>即</span>
-                    <span>生</span>
-                    <span>活</span>
+                <img src="poster.png" alt="个人海报">
+            </div>
+            <div class="gif-monitor about-gif-monitor" id="aboutGifMonitor">
+                <div class="gif-inner">
+                    <img src="oEKOrABB0Bh54NriiAAEhAEPZgWIfxtQjYI2C1.gif" alt="弹出动画">
+                </div>
+                <div class="gif-scanline"></div>
+                <div class="gif-tail">
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
                 </div>
             </div>
         </div>
@@ -132,7 +168,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">二极管三重唱</div>
-            <p class="footer-copy">© 2026 All Rights Reserved</p>
+            <p class="footer-copy">© 2026 二极管三重唱 · All Rights Reserved</p>
         </div>
     </footer>
 
@@ -142,6 +178,7 @@
     <script src="https://unpkg.com/gl-matrix@3.4.3/gl-matrix.js"></script>
     <script src="pixel-birds.js"></script>
     <script src="text-shuffle.js"></script>
+    <script src="articles-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="owner-auth-pending">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主站伴生系统 · 二极管三重唱</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="studio-auth.js"></script>
+    <link rel="stylesheet" href="studio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="studio-page">
+    <header class="studio-topbar">
+        <a class="studio-brand" href="index.html" aria-label="返回主站">
+            <img src="logo.png" alt="">
+            <span>主站伴生系统</span>
+        </a>
+        <div class="studio-status">
+            <span id="saveState">已连接主站数据</span>
+            <span id="articleCount">0 篇文章</span>
+        </div>
+        <nav class="studio-actions" aria-label="工作台操作">
+            <button type="button" class="ghost-btn" id="openMainSite">打开主站</button>
+            <button type="button" class="ghost-btn" id="openPreview">单独预览</button>
+            <button type="button" class="ghost-btn" id="exportData">导出 articles-data.js</button>
+            <button type="button" class="ghost-btn" data-owner-lock>锁定</button>
+            <button type="button" class="primary-btn" id="publishArticle">发布到主站</button>
+        </nav>
+    </header>
+
+    <main class="studio-shell">
+        <aside class="article-library" aria-label="文章库">
+            <div class="panel-heading">
+                <div class="library-title">
+                    <p class="panel-label">文章库</p>
+                    <h1>实时管理</h1>
+                </div>
+                <div class="library-actions">
+                    <button type="button" class="icon-btn subtle" id="toggleLibrary" title="收起文章库" aria-label="收起文章库" aria-expanded="true">‹</button>
+                    <button type="button" class="icon-btn" id="newArticle" title="新建文章" aria-label="新建文章">+</button>
+                </div>
+            </div>
+
+            <label class="search-box">
+                <span>搜索</span>
+                <input type="search" id="articleSearch" placeholder="标题 / 分类 / 摘要">
+            </label>
+
+            <div class="filter-tabs" role="tablist" aria-label="文章筛选">
+                <button type="button" class="active" data-filter="all">全部</button>
+                <button type="button" data-filter="published">已发布</button>
+                <button type="button" data-filter="draft">草稿</button>
+            </div>
+
+            <div class="article-list" id="articleList"></div>
+
+            <div class="library-footer">
+                <button type="button" class="ghost-btn" id="moveArticleUp">上移</button>
+                <button type="button" class="ghost-btn" id="moveArticleDown">下移</button>
+                <button type="button" class="ghost-btn danger" id="deleteArticle">删除</button>
+            </div>
+        </aside>
+
+        <section class="canvas-workbench" aria-label="超级画布">
+            <div class="meta-strip">
+                <label>
+                    <span>标题</span>
+                    <input type="text" id="articleTitle">
+                </label>
+                <label>
+                    <span>分类</span>
+                    <input type="text" id="articleCategory">
+                </label>
+                <label>
+                    <span>日期</span>
+                    <input type="text" id="articleDate" placeholder="2026.07.04">
+                </label>
+                <label class="publish-toggle">
+                    <input type="checkbox" id="articlePublished">
+                    <span>发布</span>
+                </label>
+            </div>
+
+            <label class="excerpt-field">
+                <span>摘要</span>
+                <textarea id="articleExcerpt" rows="2"></textarea>
+            </label>
+
+            <div class="canvas-toolbar">
+                <div>
+                    <p class="panel-label">超级画布</p>
+                    <h2 id="canvasTitle">未命名文章</h2>
+                </div>
+                <div class="module-actions">
+                    <button type="button" data-add-block="text">添加文本</button>
+                    <button type="button" data-add-block="image">添加图片</button>
+                    <button type="button" data-add-block="video">添加视频</button>
+                    <button type="button" data-add-block="template">添加模板</button>
+                </div>
+            </div>
+
+            <div class="cover-input-row">
+                <label>
+                    <span>封面 / 主图路径</span>
+                    <input type="text" id="articleImage" placeholder="images/... 或 poster.png">
+                </label>
+                <button type="button" class="ghost-btn" id="usePoster">使用默认海报</button>
+            </div>
+
+            <div class="canvas-frame">
+                <div class="canvas-ruler">
+                    <span>排版宽度</span>
+                    <span>12 栅格 · 模块可拖拽排序</span>
+                </div>
+                <div class="canvas-grid" id="canvasGrid"></div>
+            </div>
+        </section>
+
+        <aside class="inspector-preview" aria-label="属性与预览">
+            <section class="inspector-panel">
+                <div class="panel-heading compact">
+                    <div>
+                        <p class="panel-label">属性面板</p>
+                        <h2 id="selectedBlockTitle">未选择模块</h2>
+                    </div>
+                </div>
+                <div id="blockInspector" class="block-inspector empty-state">
+                    选择画布中的模块后，可编辑内容、媒体地址和排版宽度。
+                </div>
+            </section>
+
+            <section class="preview-panel">
+                <div class="panel-heading compact">
+                    <div>
+                        <p class="panel-label">主站预览</p>
+                        <h2>最后呈现</h2>
+                    </div>
+                    <button type="button" class="ghost-btn small" id="refreshPreview">刷新</button>
+                </div>
+                <div class="site-preview" id="sitePreview"></div>
+            </section>
+        </aside>
+    </main>
+
+    <section class="export-panel" id="exportPanel" aria-hidden="true">
+        <div class="export-card">
+            <div class="panel-heading compact">
+                <div>
+                    <p class="panel-label">导出</p>
+                    <h2>articles-data.js</h2>
+                </div>
+                <button type="button" class="icon-btn" id="closeExport" title="关闭">×</button>
+            </div>
+            <p class="export-note">静态站无法直接写入文件。需要永久发布时，把下面内容替换到 articles-data.js；当前浏览器内已经实时同步到主站。</p>
+            <textarea id="exportOutput" spellcheck="false"></textarea>
+            <div class="export-actions">
+                <button type="button" class="ghost-btn" id="copyExport">复制内容</button>
+                <button type="button" class="ghost-btn danger" id="resetLocal">清空本地同步</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="articles-data.js"></script>
+    <script src="studio.js"></script>
+</body>
+</html>

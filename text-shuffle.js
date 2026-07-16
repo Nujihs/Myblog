@@ -239,7 +239,7 @@ class TextShuffle {
 
     function initShuffles() {
         // 导航栏品牌名
-        const navBrand = document.querySelector('.nav-brand');
+        const navBrand = document.querySelector('.nav-brand-text');
         if (navBrand) {
             navBrand._shuffle = new TextShuffle(navBrand, {
                 shuffleDirection: 'down',
